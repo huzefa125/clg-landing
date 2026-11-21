@@ -21,9 +21,9 @@ const anton = Anton({
 });
 
 export const metadata: Metadata = {
-  title: "MPT 2026 Orientation | Apollo College of Physiotherapy",
+  title: "Apollo College of Physiotherapy | A unit of AHERF, Est. 1999",
   description:
-    "Orientation for the MPT 1st Year 2026 batch at Apollo College of Physiotherapy: about the college, faculty, and rules & regulations.",
+    "Apollo College of Physiotherapy, part of the Apollo Hospitals Educational and Research Foundation since 1999: departments, faculty, campus and student guidelines.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

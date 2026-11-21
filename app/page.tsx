@@ -36,109 +36,64 @@ const departments: { name: string; people: Person[] }[] = [
       { name: "Dr. N. Mani Maheswari", photo: "mani-maheswari" },
     ],
   },
-  {
-    name: "Office Admin",
-    people: [{ name: "Mr. P. Sunil Raju", photo: "sunil-raju" }],
-  },
 ];
 
-const rules: { title: string; points: string[] }[] = [
+const admin: Person[] = [{ name: "Mr. P. Sunil Raju", photo: "sunil-raju" }];
+
+const facultyCount = departments.reduce((n, d) => n + d.people.length, 0);
+const yearsSince = 25; // shown as "25+" (est. 1999)
+
+const guidelines: { title: string; points: string[] }[] = [
   {
-    title: "Behaviour & Dress Code",
+    title: "Professional Conduct",
     points: [
-      "Strictly adhere to institutional rules on clinical attire, professional conduct and discipline at all times.",
+      "Students strictly adhere to institutional rules on clinical attire, professional conduct and discipline at all times.",
       "Anti-ragging regulations are enforced rigorously.",
-      "Wear your scrubs and college ID card during college and clinical hours.",
+      "Cell phones may be used only during free hours.",
+    ],
+  },
+  {
+    title: "Dress Code",
+    points: [
+      "Scrubs and college ID cards are worn during college and clinical hours.",
       "Men: neat scrub, clean shaven, formal shoes, trimmed nails. Jeans, T-shirts, chappals, flip-flops and sandals are not permitted.",
       "Women: scrub with a black undershirt, formal shoes, tied hair and trimmed nails. Loose hair, nail polish, jeans, T-shirts, high-slit / above-knee / deep-neck tops, make-up and big or long earrings are not permitted.",
     ],
   },
   {
-    title: "Attendance",
+    title: "Attendance & Timings",
     points: [
-      "A minimum of 85% attendance is strictly required in theory, clinical and practical sessions.",
-      "College hours are 8:00 am to 4:00 pm. Grace time till 8:15 am; after that you are marked late, and three late comings count as one absent.",
-      "Take prior permission for leave and inform both coordinators in writing.",
-      "Attendance for internal examinations is compulsory.",
-      "Cell phones may be used only during free hours.",
+      "College hours are 8:00 am to 4:00 pm, with a grace time till 8:15 am.",
+      "A minimum of 85% attendance is required in theory, clinical and practical sessions.",
+      "Leave requires prior written permission.",
     ],
   },
   {
-    title: "Log Book Maintenance",
+    title: "Clinical Training",
     points: [
-      "Purchase the log book from the college and document your daily academic and clinical activities in it.",
-      "Update it regularly and get it verified and signed by your guide/supervisor at periodic intervals.",
-    ],
-  },
-  {
-    title: "Clinical Postings",
-    points: [
-      "MPT students are expected to show a high level of involvement and commitment in clinical practice throughout the program.",
-      "Whenever you are asked to attend clinical postings, be present without fail.",
-      "One holiday duty earns only one compensatory off, to be availed within a week. Comp-offs cannot be accumulated.",
-      "Always mention the holiday duty date when posting a comp-off message in the WhatsApp group.",
-    ],
-  },
-  {
-    title: "Dissertation Work",
-    points: [
-      "Begin or continue your dissertation research, including the synopsis and ethical clearance, under the supervision of a guide.",
-      "Review and document progress weekly and get it signed by your supervisor.",
-    ],
-  },
-  {
-    title: "Academic Activities",
-    points: [
-      "Journal presentations: approximately 5 per year.",
-      "Seminars and case presentations: minimum 5 each per year.",
-      "Undergraduate teaching and training: 5 sessions per year.",
-      "Present as per the given schedule. No delays, pre-ponement or postponement will be entertained.",
-      "Meet your moderator one week before the presentation and follow the guidance given.",
-    ],
-  },
-  {
-    title: "Clinical Rounds",
-    points: [
-      "Actively participate in clinical rounds, totalling approximately 550 hours over the academic year.",
-      "Register a minimum of 20 cases in the log book, or one case per week.",
-    ],
-  },
-  {
-    title: "Internal Assessment",
-    points: [
-      "Perform consistently in periodic evaluations, including mid-term and pre-final examinations.",
-      "These contribute to internal assessment, typically 20%–35% of total marks.",
-    ],
-  },
-  {
-    title: "Fees & No Discontinuation",
-    points: [
-      "Fees once paid are generally non-refundable if a student discontinues or fails to join after reporting.",
-      "Clear all dues, including the full 2nd-year fee, before the 1st-year MPT examinations begin.",
+      "Students are expected to show a high level of involvement and commitment in clinical practice.",
+      "Daily academic and clinical activities are documented in the college log book and verified by the supervisor.",
+      "Clinical rounds give exposure to patient assessment, management and interdisciplinary discussion.",
     ],
   },
 ];
 
 const tickerTop = [
-  "Welcome MPT 2026 Batch",
-  "Orientation Session",
   "Apollo College of Physiotherapy",
-  "Est. 1999",
+  `Established 1999`,
   "Part of AHERF",
-  "MPT since 2014",
-];
-
-const tickerDepts = [
   "Orthopaedics",
   "Neurosciences",
   "Cardiopulmonary",
   "Sports Medicine",
 ];
 
+const tickerDepts = ["Orthopaedics", "Neurosciences", "Cardiopulmonary", "Sports Medicine"];
+
 const nav = [
   { href: "#about", label: "About" },
+  { href: "#departments", label: "Departments" },
   { href: "#faculty", label: "Faculty" },
-  { href: "#rules", label: "Rules" },
   { href: "#campus", label: "Campus" },
 ];
 
@@ -247,14 +202,14 @@ export default function Home() {
               </a>
             ))}
           </nav>
-          <a href="#rules" className="font-ui flex items-center gap-2 rounded-md bg-ink py-2 pr-2 pl-4 text-xs font-bold text-white uppercase transition hover:bg-brand-deep">
-            Read Rules
+          <a href="#faculty" className="font-ui flex items-center gap-2 rounded-md bg-ink py-2 pr-2 pl-4 text-xs font-bold text-white uppercase transition hover:bg-brand-deep">
+            Our Faculty
             <span className="flex h-6 w-6 items-center justify-center rounded bg-white text-ink">→</span>
           </a>
         </div>
         <nav className="flex justify-around border-t-2 border-ink bg-white md:hidden">
           {nav.map((n) => (
-            <a key={n.href} href={n.href} className="font-ui flex-1 py-2 text-center text-xs font-bold text-ink uppercase">
+            <a key={n.href} href={n.href} className="font-ui flex-1 py-2 text-center text-[11px] font-bold text-ink uppercase">
               {n.label}
             </a>
           ))}
@@ -271,7 +226,7 @@ export default function Home() {
                 className="rise font-ui inline-block -rotate-2 rounded-md border-2 border-ink bg-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase shadow-hard-sm sm:text-xs"
                 style={d(0)}
               >
-                Apollo College of Physiotherapy
+                A unit of AHERF · Since 1999
               </span>
 
               <h1 className="font-display mt-5 uppercase">
@@ -279,19 +234,19 @@ export default function Home() {
                   className="rise block text-[clamp(1.6rem,3.2vw,2.6rem)] leading-none tracking-wide text-white [text-shadow:2px_2px_0_var(--color-ink)]"
                   style={d(0.1)}
                 >
-                  MPT 1st Year · 2026 Batch
+                  Apollo College of
                 </span>
                 <span
-                  className="rise mt-2 block text-[clamp(3.6rem,min(9vw,14svh),7.5rem)] leading-[0.88] tracking-tight text-ink"
+                  className="rise mt-2 block text-[clamp(3.4rem,min(8.4vw,13svh),7rem)] leading-[0.88] tracking-tight text-ink"
                   style={d(0.2)}
                 >
-                  Orientation
+                  Physio-
                 </span>
                 <span
-                  className="rise block text-[clamp(3.6rem,min(9vw,14svh),7.5rem)] leading-[0.88] tracking-tight text-ink"
+                  className="rise block text-[clamp(3.4rem,min(8.4vw,13svh),7rem)] leading-[0.88] tracking-tight text-ink"
                   style={d(0.3)}
                 >
-                  Session
+                  therapy
                 </span>
               </h1>
 
@@ -299,34 +254,34 @@ export default function Home() {
                 className="rise mx-auto mt-5 max-w-md text-base leading-relaxed text-ink/80 sm:text-lg lg:mx-0"
                 style={d(0.4)}
               >
-                Welcome to Apollo College of Physiotherapy. Get to know your college, meet your faculty, and read the
-                rules that will guide your MPT journey.
+                Part of the Apollo Hospitals Educational and Research Foundation, shaping physiotherapists since 1999
+                through specialised departments and hands-on clinical training.
               </p>
 
               <div className="rise mt-7 flex flex-wrap items-center justify-center gap-3 lg:justify-start" style={d(0.5)}>
                 <a
-                  href="#faculty"
+                  href="#departments"
                   className="font-ui group inline-flex items-center gap-2 rounded-md border-2 border-ink bg-ink py-2 pr-2 pl-5 text-sm font-bold text-white uppercase shadow-hard transition hover:-translate-y-0.5 hover:bg-brand-deep"
                 >
-                  Meet Your Faculty
+                  Explore Departments
                   <span className="flex h-7 w-7 items-center justify-center rounded bg-white text-ink transition group-hover:translate-x-0.5">
                     →
                   </span>
                 </a>
                 <a
-                  href="#rules"
+                  href="#faculty"
                   className="font-ui inline-flex items-center rounded-md border-2 border-ink bg-white px-5 py-[0.7rem] text-sm font-bold text-ink uppercase shadow-hard transition hover:-translate-y-0.5"
                 >
-                  Read the Rules
+                  Meet Our Faculty
                 </a>
               </div>
 
               <div className="mx-auto mt-8 grid max-w-md grid-cols-4 gap-2 sm:gap-3 lg:mx-0">
                 {[
-                  { v: "85%", l: "Attendance" },
-                  { v: "8:00", l: "Start time" },
-                  { v: "550", l: "Clinic hrs" },
-                  { v: "20+", l: "Cases" },
+                  { v: "1999", l: "Founded" },
+                  { v: `${yearsSince}+`, l: "Years" },
+                  { v: "4", l: "Departments" },
+                  { v: `${facultyCount}`, l: "Faculty" },
                 ].map((s, i) => (
                   <div
                     key={s.l}
@@ -345,11 +300,9 @@ export default function Home() {
             {/* Right: photo collage */}
             <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
               <div className="grid grid-cols-5 gap-3 sm:gap-4">
-                {/* group photo */}
                 <figure className="pop relative col-span-3 aspect-[16/11] -rotate-2 overflow-hidden rounded-2xl border-2 border-ink bg-white shadow-hard" style={d(0.3)}>
                   <Image src="/orientation/group-2.jpg" alt="Faculty of Apollo College of Physiotherapy" fill sizes="(min-width: 1024px) 380px, 60vw" className="object-cover" preload />
                 </figure>
-                {/* principal */}
                 <figure className="pop relative col-span-2 row-span-2 rotate-2 overflow-hidden rounded-2xl border-2 border-ink bg-white shadow-hard" style={d(0.45)}>
                   <Image src="/orientation/staff/hannah-rajsekhar.jpg" alt="Principal Prof. & Dr. Hannah Rajsekhar" fill sizes="(min-width: 1024px) 260px, 40vw" className="object-cover object-top" />
                   <figcaption className="absolute inset-x-2 bottom-2 rounded-lg border-2 border-ink bg-white px-2 py-1.5 text-center">
@@ -357,12 +310,11 @@ export default function Home() {
                     <span className="font-display block text-sm leading-tight uppercase sm:text-base">Dr. Hannah Rajsekhar</span>
                   </figcaption>
                 </figure>
-                {/* coordinator + OPD */}
                 <div className="col-span-3 grid grid-cols-2 gap-3 sm:gap-4">
                   <figure className="pop relative aspect-[4/5] rotate-1 overflow-hidden rounded-2xl border-2 border-ink bg-white shadow-hard" style={d(0.6)}>
-                    <Image src="/orientation/staff/n-mary.jpg" alt="Class coordinator Dr. N. Mary" fill sizes="(min-width: 1024px) 190px, 30vw" className="object-cover object-top" />
+                    <Image src="/orientation/group-1.jpg" alt="Students of Apollo College of Physiotherapy" fill sizes="(min-width: 1024px) 190px, 30vw" className="object-cover" />
                     <figcaption className="font-ui absolute top-2 right-2 rounded border-2 border-ink bg-flame px-2 py-0.5 text-[9px] font-bold text-white uppercase sm:text-[10px]">
-                      Coordinator
+                      Students
                     </figcaption>
                   </figure>
                   <figure className="pop relative aspect-[4/5] -rotate-1 overflow-hidden rounded-2xl border-2 border-ink bg-white shadow-hard" style={d(0.75)}>
@@ -388,10 +340,10 @@ export default function Home() {
                 className="font-ui float-slow absolute -top-4 right-4 z-10 rotate-6 rounded-md border-2 border-ink bg-flame px-3 py-1 text-[10px] font-bold text-white uppercase shadow-hard-sm sm:text-xs"
                 style={d(1)}
               >
-                MPT since 2014
+                Part of AHERF
               </span>
               <div className="rise absolute -bottom-10 -left-8 z-10 hidden sm:block lg:-left-12" style={d(1.1)}>
-                <SpinBadge text="WELCOME • ORIENTATION 2026 • MPT BATCH • " className="relative" />
+                <SpinBadge text="APOLLO • COLLEGE OF PHYSIOTHERAPY • " className="relative" />
               </div>
             </div>
           </div>
@@ -406,16 +358,17 @@ export default function Home() {
                 <p className="text-lg leading-relaxed text-muted">
                   Founded in <strong className="text-ink">1999</strong>, Apollo College of Physiotherapy is part of the{" "}
                   <strong className="text-ink">Apollo Hospitals Educational and Research Foundation (AHERF)</strong>. The
-                  Master of Physiotherapy (MPT) program began in <strong className="text-ink">2014</strong>.
+                  college trains physiotherapists through four specialised departments, a dedicated faculty and
+                  hands-on clinical exposure, including its own Physical Medicine &amp; Rehabilitation OPD.
                 </p>
                 <p className="font-ui mt-6 mb-3 text-xs font-bold tracking-widest text-brand uppercase">4 Departments</p>
                 <div className="flex flex-wrap gap-2">
-                  {["Orthopaedics", "Neurosciences", "Cardiopulmonary", "Sports Medicine"].map((d, i) => (
+                  {tickerDepts.map((dep, i) => (
                     <span
-                      key={d}
+                      key={dep}
                       className={`font-ui rounded-md border-2 border-ink px-3 py-1 text-sm font-bold uppercase shadow-hard-sm ${i % 2 ? "rotate-1 bg-accent" : "-rotate-1 bg-tint"}`}
                     >
-                      {d}
+                      {dep}
                     </span>
                   ))}
                 </div>
@@ -432,7 +385,7 @@ export default function Home() {
                 {[
                   { role: "Principal", name: "Prof. & Dr. Hannah Rajsekhar", bg: "bg-brand text-white" },
                   { role: "Vice Principal", name: "Prof. & Dr. D. Varalakshmi", bg: "bg-accent text-ink" },
-                  { role: "Class Coordinators", name: "Dr. N. Mary & Dr. Komal Nagar", bg: "bg-ink text-white" },
+                  { role: "Parent Foundation", name: "Apollo Hospitals Educational & Research Foundation", bg: "bg-ink text-white" },
                 ].map((p) => (
                   <div key={p.role} className={`reveal rounded-2xl border-2 border-ink p-6 shadow-hard transition hover:-translate-y-1 ${p.bg}`}>
                     <p className="font-ui text-xs font-bold tracking-widest uppercase opacity-80">{p.role}</p>
@@ -449,12 +402,43 @@ export default function Home() {
           className="font-display -rotate-1 border-y-2 border-ink bg-brand py-3 text-3xl tracking-wide text-white uppercase"
         />
 
+        {/* Departments */}
+        <section id="departments" className="scroll-mt-28 py-20">
+          <div className="mx-auto max-w-6xl px-4">
+            <Heading kicker="What we teach">Our Departments</Heading>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {departments.map((dept, i) => (
+                <a
+                  key={dept.name}
+                  href="#faculty"
+                  className={`reveal group flex flex-col rounded-2xl border-2 border-ink p-6 shadow-hard transition hover:-translate-y-1.5 ${["bg-white", "bg-accent", "bg-brand text-white", "bg-ink text-white"][i]}`}
+                >
+                  <span className="font-display text-6xl leading-none opacity-30">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="font-display mt-6 text-3xl leading-tight tracking-wide uppercase">{dept.name}</h3>
+                  <div className="mt-6 flex items-center justify-between">
+                    <div className="flex -space-x-3">
+                      {dept.people.map((p) => (
+                        <span key={p.photo} className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-ink bg-white">
+                          <Image src={`/orientation/staff/${p.photo}.jpg`} alt="" fill sizes="40px" className="object-cover object-top" />
+                        </span>
+                      ))}
+                    </div>
+                    <span className="font-ui text-xs font-bold tracking-widest uppercase opacity-80">
+                      {dept.people.length} Faculty →
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Faculty */}
-        <section id="faculty" className="scroll-mt-28 py-20">
+        <section id="faculty" className="scroll-mt-28 border-t-2 border-ink bg-tint py-20">
           <div className="mx-auto max-w-6xl px-4">
             <Heading kicker="Our team">Faculty & Staff</Heading>
             <div className="space-y-16">
-              {departments.map((dept) => (
+              {[...departments, { name: "Office Admin", people: admin }].map((dept) => (
                 <div key={dept.name}>
                   <div className="reveal mb-6 flex items-center gap-4">
                     <h3 className="font-display text-3xl tracking-wide text-brand-deep uppercase sm:text-4xl">{dept.name}</h3>
@@ -478,9 +462,7 @@ export default function Home() {
                             className="object-cover object-top transition duration-500 group-hover:scale-105"
                           />
                         </div>
-                        <figcaption className="font-ui px-1 pt-3 pb-1 text-center text-sm font-bold text-ink">
-                          {p.name}
-                        </figcaption>
+                        <figcaption className="font-ui px-1 pt-3 pb-1 text-center text-sm font-bold text-ink">{p.name}</figcaption>
                       </figure>
                     ))}
                   </div>
@@ -494,15 +476,15 @@ export default function Home() {
         <section className="border-y-2 border-ink bg-ink py-20 text-white">
           <div className="mx-auto max-w-6xl px-4">
             <Heading kicker="At a glance" light>
-              Numbers to Remember
+              College in Numbers
             </Heading>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
               {[
-                { v: "85%", l: "Minimum attendance in theory & clinicals" },
-                { v: "8–4", l: "College hours · grace till 8:15 am" },
-                { v: "550", l: "Hours of clinical rounds per year" },
-                { v: "20+", l: "Log book cases (≈1 per week)" },
-                { v: "35%", l: "Internal assessment, up to (20–35%)" },
+                { v: "1999", l: "Year of foundation" },
+                { v: `${yearsSince}+`, l: "Years of physiotherapy education" },
+                { v: "4", l: "Specialised departments" },
+                { v: `${facultyCount}`, l: "Faculty members" },
+                { v: "85%", l: "Minimum attendance standard" },
               ].map((k, i) => (
                 <div
                   key={k.l}
@@ -516,12 +498,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Rules */}
-        <section id="rules" className="scroll-mt-28 py-20">
+        {/* Guidelines */}
+        <section id="guidelines" className="scroll-mt-28 py-20">
           <div className="mx-auto max-w-4xl px-4">
-            <Heading kicker="Please read carefully">Rules & Regulations</Heading>
+            <Heading kicker="Campus culture">Student Guidelines</Heading>
             <div className="space-y-4">
-              {rules.map((r, i) => (
+              {guidelines.map((r, i) => (
                 <details
                   key={r.title}
                   open={i === 0}
@@ -556,14 +538,14 @@ export default function Home() {
             <Heading kicker="ACOP @ glance">Life at Campus</Heading>
             <div className="grid items-start gap-6 md:grid-cols-[2fr_1fr]">
               <div className="grid gap-6">
-                <figure className="-rotate-1 reveal overflow-hidden rounded-xl border-2 border-ink bg-white p-2 shadow-hard">
+                <figure className="reveal -rotate-1 overflow-hidden rounded-xl border-2 border-ink bg-white p-2 shadow-hard">
                   <Image src="/orientation/group-1.jpg" alt="Students and faculty of Apollo College of Physiotherapy" width={1080} height={358} sizes="(min-width: 768px) 66vw, 100vw" className="h-auto w-full rounded-lg" />
                 </figure>
-                <figure className="rotate-1 reveal overflow-hidden rounded-xl border-2 border-ink bg-white p-2 shadow-hard">
-                  <Image src="/orientation/group-2.jpg" alt="Faculty gathering at Apollo College of Physiotherapy" width={1080} height={513} sizes="(min-width: 768px) 66vw, 100vw" className="h-auto w-full rounded-lg" />
+                <figure className="reveal rotate-1 overflow-hidden rounded-xl border-2 border-ink bg-white p-2 shadow-hard">
+                  <Image src="/orientation/group-2.jpg" alt="Faculty of Apollo College of Physiotherapy" width={1080} height={513} sizes="(min-width: 768px) 66vw, 100vw" className="h-auto w-full rounded-lg" />
                 </figure>
               </div>
-              <figure className="relative rotate-2 reveal overflow-hidden rounded-xl border-2 border-ink bg-white p-2 shadow-hard">
+              <figure className="reveal relative rotate-2 overflow-hidden rounded-xl border-2 border-ink bg-white p-2 shadow-hard">
                 <Image src="/orientation/pmr-opd.jpg" alt="Department of Physical Medicine and Rehabilitation OPD" width={1050} height={1400} sizes="(min-width: 768px) 33vw, 100vw" className="h-auto w-full rounded-lg" />
                 <figcaption className="font-display px-1 pt-3 pb-1 text-xl tracking-wide uppercase">
                   Physical Medicine &amp; Rehabilitation OPD
@@ -577,15 +559,25 @@ export default function Home() {
         <section className="relative overflow-hidden py-24 text-center">
           <Starburst className="absolute top-10 left-[6%] hidden h-24 w-24 rotate-12 sm:block" />
           <div className="mx-auto max-w-3xl px-4">
-            <p className="font-display reveal text-7xl leading-none tracking-tight text-ink uppercase sm:text-9xl">Thank You!</p>
-            <p className="mt-6 text-lg text-muted">
-              Welcome to the team. We wish you a rewarding journey through your MPT program at Apollo College of
-              Physiotherapy.
+            <p className="font-display reveal text-6xl leading-none tracking-tight text-ink uppercase sm:text-8xl">
+              Shaping Physiotherapists Since 1999
             </p>
-            <div className="mt-8 flex justify-center">
-              <span className="font-ui -rotate-2 rounded-md border-2 border-ink bg-flame px-4 py-2 text-sm font-bold text-white uppercase shadow-hard-sm">
-                Welcome to the team
-              </span>
+            <p className="mt-6 text-lg text-muted">
+              Apollo College of Physiotherapy · A unit of the Apollo Hospitals Educational and Research Foundation.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <a
+                href="#departments"
+                className="font-ui rounded-md border-2 border-ink bg-ink px-5 py-3 text-sm font-bold text-white uppercase shadow-hard-sm transition hover:-translate-y-0.5"
+              >
+                Our Departments
+              </a>
+              <a
+                href="#faculty"
+                className="font-ui rounded-md border-2 border-ink bg-white px-5 py-3 text-sm font-bold text-ink uppercase shadow-hard-sm transition hover:-translate-y-0.5"
+              >
+                Meet the Faculty
+              </a>
             </div>
           </div>
         </section>
@@ -597,7 +589,7 @@ export default function Home() {
           <p>
             <span className="font-display text-lg tracking-wide text-white uppercase">Apollo College of Physiotherapy</span> · A unit of AHERF
           </p>
-          <p className="font-ui text-xs font-bold tracking-widest uppercase">MPT 1st Year 2026 · Orientation</p>
+          <p className="font-ui text-xs font-bold tracking-widest uppercase">Est. 1999</p>
         </div>
       </footer>
     </>
