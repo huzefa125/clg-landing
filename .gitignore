@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# source files not used by the site
+*.pptx
+~$*
+/college logo.png
+
+# netlify
+.netlify
