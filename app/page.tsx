@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import Team, { type TeamMember } from "@/components/ui/team-01";
+
 type Person = { name: string; photo: string };
 
 const departments: { name: string; people: Person[] }[] = [
@@ -39,6 +41,24 @@ const departments: { name: string; people: Person[] }[] = [
 ];
 
 const admin: Person[] = [{ name: "Mr. P. Sunil Raju", photo: "sunil-raju" }];
+
+const titles: Record<string, string> = {
+  "Dr. Hannah Rajsekhar": "Principal",
+  "Dr. D. Varalakshmi": "Vice Principal",
+};
+
+const teamMembers: TeamMember[] = [
+  ...departments.flatMap((dep) =>
+    dep.people.map((p) => ({
+      name: p.name,
+      role: dep.name,
+      group: dep.name,
+      image: `/orientation/staff/${p.photo}.jpg`,
+      title: titles[p.name],
+    })),
+  ),
+  ...admin.map((p) => ({ name: p.name, role: "Office Admin", group: "Office Admin", image: `/orientation/staff/${p.photo}.jpg` })),
+];
 
 const facultyCount = departments.reduce((n, d) => n + d.people.length, 0);
 const yearsSince = 25; // shown as "25+" (est. 1999)
@@ -451,43 +471,14 @@ export default function Home() {
         </section>
 
         {/* Faculty */}
-        <section id="faculty" className="scroll-mt-36 md:scroll-mt-28 border-t-2 border-ink bg-tint py-20">
-          <div className="mx-auto max-w-6xl px-4">
-            <Heading kicker="Our team">Faculty & Staff</Heading>
-            <div className="space-y-16">
-              {[...departments, { name: "Office Admin", people: admin }].map((dept) => (
-                <div key={dept.name}>
-                  <div className="reveal mb-6 flex items-center gap-4">
-                    <h3 className="font-display text-3xl tracking-wide text-brand-deep uppercase sm:text-4xl">{dept.name}</h3>
-                    <span className="h-0.5 flex-1 bg-ink" />
-                    <span className="font-ui rounded-full border-2 border-ink bg-accent px-3 py-0.5 text-xs font-bold">
-                      {dept.people.length}
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-                    {dept.people.map((p, i) => (
-                      <figure
-                        key={p.name}
-                        className={`reveal group relative rounded-xl border-2 border-ink bg-white p-2 shadow-hard transition hover:rotate-0 ${i % 2 ? "rotate-1" : "-rotate-1"}`}
-                      >
-                        <div className="relative aspect-[4/5] overflow-hidden rounded-lg bg-line">
-                          <Image
-                            src={`/orientation/staff/${p.photo}.jpg`}
-                            alt={p.name}
-                            fill
-                            sizes="(min-width: 1024px) 260px, (min-width: 640px) 33vw, 50vw"
-                            className="object-cover object-top transition duration-500 group-hover:scale-105"
-                          />
-                        </div>
-                        <figcaption className="font-ui px-1 pt-3 pb-1 text-center text-sm font-bold text-ink">{p.name}</figcaption>
-                      </figure>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <Team
+          id="faculty"
+          members={teamMembers}
+          kicker="Our team"
+          heading="Faculty & Staff"
+          groups={[...departments.map((dep) => dep.name), "Office Admin"]}
+          className="scroll-mt-36 border-t-2 border-ink bg-tint py-20 md:scroll-mt-28"
+        />
 
         {/* Numbers */}
         <section className="border-y-2 border-ink bg-ink py-20 text-white">

@@ -15,6 +15,19 @@
   --color-line: #e5e5e5;
   --color-tint: #e9f7fa;
   --color-paper: #f7fbfc;
+  /* shadcn/ui tokens mapped onto the college palette */
+  --color-background: #f7fbfc;
+  --color-foreground: #092c3b;
+  --color-primary: #0783a0;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #e9f7fa;
+  --color-secondary-foreground: #092c3b;
+  --color-destructive: #f4421a;
+  --color-destructive-foreground: #ffffff;
+  --color-muted-foreground: #4a5a60;
+  --color-border: #092c3b;
+  --color-ring: #0783a0;
+
   --font-sans: var(--font-lato);
   --font-ui: var(--font-montserrat);
   --font-display: var(--font-anton);
