@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
-/* Palette taken from aimsrchittoor.edu.in */
+/* Navy + teal palette (from apollo-college-physiotherapy.vercel.app) */
 @theme inline {
-  --color-brand: #0483a6;
-  --color-brand-dark: #036a87;
-  --color-brand-deep: #024e63;
+  --color-navy: #092c3b;
+  --color-navy-2: #103f50;
+  --color-brand: #0783a0;
+  --color-brand-dark: #056981;
+  --color-brand-deep: #092c3b;
   --color-accent: #23afc8;
   --color-sky: #1aa5d8;
   --color-flame: #f4421a;
-  --color-ink: #0b232b;
+  --color-ink: #092c3b;
   --color-muted: #4a5a60;
   --color-line: #e5e5e5;
   --color-tint: #e9f7fa;
@@ -127,9 +129,17 @@
 }
 /* subtle moving dot grid behind the hero */
 .hero-bg {
-  background-image: radial-gradient(rgb(11 35 43 / 0.12) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(rgb(255 255 255 / 0.07) 1.5px, transparent 1.5px);
   background-size: 24px 24px;
   animation: drift 6s linear infinite;
+}
+
+/* on the navy hero, hard shadows switch to teal so they stay visible */
+.hero-bg .shadow-hard {
+  box-shadow: 5px 5px 0 0 var(--color-accent);
+}
+.hero-bg .shadow-hard-sm {
+  box-shadow: 3px 3px 0 0 var(--color-accent);
 }
 
 /* scroll-reveal (progressive enhancement: browsers without scroll timelines just show content) */

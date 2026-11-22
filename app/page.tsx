@@ -185,9 +185,9 @@ export default function Home() {
       <Marquee items={tickerTop} className="font-ui bg-ink py-2 text-[11px] font-bold tracking-widest text-white uppercase" />
 
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b-2 border-ink bg-accent">
+      <header className="sticky top-0 z-50 border-b-2 border-ink bg-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
-          <a href="#top" className="flex items-center gap-2 rounded-lg bg-white px-2 py-1 shadow-hard-sm ring-2 ring-ink">
+          <a href="#top" className="flex items-center gap-2 rounded-lg bg-white px-2 py-1">
             <Image src="/orientation/apollo-logo.png" alt="Apollo College of Physiotherapy" width={280} height={207} className="h-9 w-auto" loading="eager" />
             <span className="font-display hidden text-lg leading-none tracking-wide text-brand-deep uppercase sm:block">
               College of
@@ -197,8 +197,8 @@ export default function Home() {
           </a>
           <nav className="hidden items-center gap-1 md:flex">
             {nav.map((n) => (
-              <a key={n.href} href={n.href} className="font-ui rounded-md px-3 py-2 text-sm font-bold text-ink uppercase transition hover:bg-white/40">
-                {n.label} <span className="text-brand-deep">+</span>
+              <a key={n.href} href={n.href} className="font-ui rounded-md px-3 py-2 text-sm font-bold text-ink uppercase transition hover:bg-tint hover:text-brand">
+                {n.label} <span className="text-brand">+</span>
               </a>
             ))}
           </nav>
@@ -206,6 +206,23 @@ export default function Home() {
             Our Faculty
             <span className="flex h-6 w-6 items-center justify-center rounded bg-white text-ink">→</span>
           </a>
+        </div>
+        <div className="bg-navy text-white">
+          <div className="font-ui mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-4 py-1.5 text-[11px] font-semibold sm:justify-end sm:text-xs">
+            <a href="mailto:ACP@apolloimsr.edu.in" className="inline-flex items-center gap-1.5 transition hover:text-accent">
+              <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 text-accent" fill="currentColor" aria-hidden="true">
+                <path d="M2.5 4A1.5 1.5 0 001 5.5v.4l9 5.6 9-5.6v-.4A1.5 1.5 0 0017.5 4h-15z" />
+                <path d="M19 7.7l-8.6 5.4a.75.75 0 01-.8 0L1 7.7v6.8A1.5 1.5 0 002.5 16h15a1.5 1.5 0 001.5-1.5V7.7z" />
+              </svg>
+              ACP@apolloimsr.edu.in
+            </a>
+            <a href="tel:+914023431745" className="inline-flex items-center gap-1.5 transition hover:text-accent">
+              <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 text-accent" fill="currentColor" aria-hidden="true">
+                <path d="M2 3.5A1.5 1.5 0 013.5 2h1.15a1.5 1.5 0 011.46 1.14l.6 2.42a1.5 1.5 0 01-.55 1.55l-.96.72a11.04 11.04 0 004.97 4.97l.72-.96a1.5 1.5 0 011.55-.55l2.42.6A1.5 1.5 0 0118 13.35v1.15A1.5 1.5 0 0116.5 16h-1C8.04 16 2 9.96 2 2.5v1z" />
+              </svg>
+              040-23431745
+            </a>
+          </div>
         </div>
         <nav className="flex justify-around border-t-2 border-ink bg-white md:hidden">
           {nav.map((n) => (
@@ -218,8 +235,8 @@ export default function Home() {
 
       <main id="top" className="flex-1">
         {/* Hero */}
-        <section className="hero-bg relative overflow-hidden border-b-2 border-ink bg-accent">
-          <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-12 sm:px-6 sm:py-16 lg:min-h-[calc(100svh-6.25rem)] lg:grid-cols-[1fr_1.05fr] lg:gap-10 lg:py-10">
+        <section className="hero-bg relative overflow-hidden border-b-2 border-ink bg-navy">
+          <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-12 sm:px-6 sm:py-16 lg:min-h-[calc(100svh-8rem)] lg:grid-cols-[1fr_1.05fr] lg:gap-10 lg:py-10">
             {/* Left: copy */}
             <div className="relative z-10 text-center lg:text-left">
               <span
@@ -231,19 +248,19 @@ export default function Home() {
 
               <h1 className="font-display mt-5 uppercase">
                 <span
-                  className="rise block text-[clamp(1.6rem,3.2vw,2.6rem)] leading-none tracking-wide text-white [text-shadow:2px_2px_0_var(--color-ink)]"
+                  className="rise block text-[clamp(1.6rem,3.2vw,2.6rem)] leading-none tracking-wide text-accent"
                   style={d(0.1)}
                 >
                   Apollo College of
                 </span>
                 <span
-                  className="rise mt-2 block text-[clamp(3.4rem,min(8.4vw,13svh),7rem)] leading-[0.88] tracking-tight text-ink"
+                  className="rise mt-2 block text-[clamp(3.4rem,min(8.4vw,13svh),7rem)] leading-[0.88] tracking-tight text-white"
                   style={d(0.2)}
                 >
                   Physio-
                 </span>
                 <span
-                  className="rise block text-[clamp(3.4rem,min(8.4vw,13svh),7rem)] leading-[0.88] tracking-tight text-ink"
+                  className="rise block text-[clamp(3.4rem,min(8.4vw,13svh),7rem)] leading-[0.88] tracking-tight text-white"
                   style={d(0.3)}
                 >
                   therapy
@@ -251,7 +268,7 @@ export default function Home() {
               </h1>
 
               <p
-                className="rise mx-auto mt-5 max-w-md text-base leading-relaxed text-ink/80 sm:text-lg lg:mx-0"
+                className="rise mx-auto mt-5 max-w-md text-base leading-relaxed text-white/75 sm:text-lg lg:mx-0"
                 style={d(0.4)}
               >
                 Part of the Apollo Hospitals Educational and Research Foundation, shaping physiotherapists since 1999
@@ -261,7 +278,7 @@ export default function Home() {
               <div className="rise mt-7 flex flex-wrap items-center justify-center gap-3 lg:justify-start" style={d(0.5)}>
                 <a
                   href="#departments"
-                  className="font-ui group inline-flex items-center gap-2 rounded-md border-2 border-ink bg-ink py-2 pr-2 pl-5 text-sm font-bold text-white uppercase shadow-hard transition hover:-translate-y-0.5 hover:bg-brand-deep"
+                  className="font-ui group inline-flex items-center gap-2 rounded-md border-2 border-white bg-brand py-2 pr-2 pl-5 text-sm font-bold text-white uppercase shadow-hard transition hover:-translate-y-0.5 hover:bg-brand-dark"
                 >
                   Explore Departments
                   <span className="flex h-7 w-7 items-center justify-center rounded bg-white text-ink transition group-hover:translate-x-0.5">
@@ -343,14 +360,14 @@ export default function Home() {
                 Part of AHERF
               </span>
               <div className="rise absolute -bottom-10 -left-8 z-10 hidden sm:block lg:-left-12" style={d(1.1)}>
-                <SpinBadge text="APOLLO • COLLEGE OF PHYSIOTHERAPY • " className="relative" />
+                <SpinBadge text="APOLLO • PHYSIOTHERAPY • EST. 1999 • " className="relative" />
               </div>
             </div>
           </div>
         </section>
 
         {/* About */}
-        <section id="about" className="scroll-mt-28 py-20">
+        <section id="about" className="scroll-mt-36 md:scroll-mt-28 py-20">
           <div className="mx-auto max-w-6xl px-4">
             <Heading kicker="Who we are">About the College</Heading>
             <div className="grid gap-8 lg:grid-cols-2">
@@ -403,7 +420,7 @@ export default function Home() {
         />
 
         {/* Departments */}
-        <section id="departments" className="scroll-mt-28 py-20">
+        <section id="departments" className="scroll-mt-36 md:scroll-mt-28 py-20">
           <div className="mx-auto max-w-6xl px-4">
             <Heading kicker="What we teach">Our Departments</Heading>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -434,7 +451,7 @@ export default function Home() {
         </section>
 
         {/* Faculty */}
-        <section id="faculty" className="scroll-mt-28 border-t-2 border-ink bg-tint py-20">
+        <section id="faculty" className="scroll-mt-36 md:scroll-mt-28 border-t-2 border-ink bg-tint py-20">
           <div className="mx-auto max-w-6xl px-4">
             <Heading kicker="Our team">Faculty & Staff</Heading>
             <div className="space-y-16">
@@ -499,7 +516,7 @@ export default function Home() {
         </section>
 
         {/* Guidelines */}
-        <section id="guidelines" className="scroll-mt-28 py-20">
+        <section id="guidelines" className="scroll-mt-36 md:scroll-mt-28 py-20">
           <div className="mx-auto max-w-4xl px-4">
             <Heading kicker="Campus culture">Student Guidelines</Heading>
             <div className="space-y-4">
@@ -533,7 +550,7 @@ export default function Home() {
         </section>
 
         {/* Campus */}
-        <section id="campus" className="scroll-mt-28 border-t-2 border-ink bg-accent py-20">
+        <section id="campus" className="scroll-mt-36 md:scroll-mt-28 border-t-2 border-ink bg-tint py-20">
           <div className="mx-auto max-w-6xl px-4">
             <Heading kicker="ACOP @ glance">Life at Campus</Heading>
             <div className="grid items-start gap-6 md:grid-cols-[2fr_1fr]">
